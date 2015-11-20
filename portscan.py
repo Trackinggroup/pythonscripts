@@ -1,47 +1,39 @@
-# -*- coding:utf8 -*-
-#!/usr/bin/python
-# Python:          2.7.8
+# -*- coding:gbk -*-
+# Python:          2.7
 # Platform:        Windows & Linux
 # Author:          Steven
-# Program:         ç«¯å£æ‰«æ
-# History:         2015.10.12
+# Program:         ¶Ë¿ÚÉ¨Ãè
+# History:         2015.11.19
  
 import socket, time, thread
 socket.setdefaulttimeout(3)
  
-def socket_port(ip,port):
-    """
-    è¾“å…¥IPå’Œç«¯å£å·ï¼Œæ‰«æåˆ¤æ–­ç«¯å£æ˜¯å¦å¼€æ”¾
-    """
+def socket_port(ip, port): # ÊäÈëIPºÍ¶Ë¿ÚºÅ£¬É¨ÃèÅĞ¶Ï¶Ë¿ÚÊÇ·ñ¿ª·Å
     try:
         if port>=65535:
-            print u'ç«¯å£æ‰«æç»“æŸ'
+            print u'¶Ë¿ÚÉ¨Ãè½áÊø'
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         result=s.connect_ex((ip,port))
         if result == 0:
             lock.acquire()
-            print ip, u':',port,u'ç«¯å£å¼€æ”¾'
+            print ip, u':',port,u'¶Ë¿Ú¿ª·Å'
             lock.release()
         s.close()
     except:
-        print u'ç«¯å£æ‰«æå¼‚å¸¸'
+        print u'¶Ë¿ÚÉ¨ÃèÒì³£'
  
-def ip_scan(ip):
-    """
-    è¾“å…¥IPï¼Œæ‰«æIPçš„0-65534ç«¯å£æƒ…å†µ
-    """
+def ip_scan(ip): #ÊäÈëIP£¬É¨ÃèIPµÄ0-65534¶Ë¿ÚÇé¿ö
     try:
-        print u'å¼€å§‹æ‰«æ %s' % ip
+        print u'¿ªÊ¼É¨Ãè %s' % ip
         start_time = time.time()
         for i in range(0,65534):
             thread.start_new_thread(socket_port,(ip,int(i)))
-        print u'æ‰«æç«¯å£å®Œæˆï¼Œæ€»å…±ç”¨æ—¶ ï¼š%.2f' %(time.time()-start_time)
-        raw_input("æŒ‰ä»»æ„é”®é€€å‡ºç¨‹åº...")
+        print u'É¨Ãè¶Ë¿ÚÍê³É£¬×Ü¹²ÓÃÊ± £º%.2f' %(time.time()-start_time)
+        raw_input("°´ÈÎÒâ¼üÍË³ö³ÌĞò...")
     except:
-        print u'æ‰«æipå‡ºé”™'
-         
- 
+        print u'É¨Ãèip³ö´í'
+
 if __name__ == '__main__':
-    url=raw_input('è¯·è¾“å…¥éœ€è¦æ‰«æçš„IP:\n')
+    url = raw_input('ÇëÊäÈëĞèÒªÉ¨ÃèµÄIP(s):\n')
     lock=thread.allocate_lock()
     ip_scan(url)

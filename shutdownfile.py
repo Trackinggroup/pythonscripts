@@ -31,14 +31,22 @@ except socket.error, e:
     print "Connection error: %s" % e
     sys.exit(1)
 
+fd = s.makefile('rw',0)
+
 print "Sleeping..."
 time.sleep(10)
 print "Continuing..."
 
 try:
-    s.sendall("GET %s HTTP/1.0\r\n\r\n" % filename)
+    fd.write("GET %s HTTP/1.0\r\n\r\n" % filename)
 except socket.error, e:
     print "Error sending data: %s" % e
+    sys.exit(1)
+
+try:
+    fd.flush()
+except socket.error, e:
+    print "Error sending data (detected by flush): %s" % e
     sys.exit(1)
 
 try:
