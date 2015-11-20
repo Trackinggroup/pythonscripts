@@ -34,7 +34,7 @@ except socket.error, e:
 fd = s.makefile('rw',0)
 
 print "Sleeping..."
-time.sleep(10)
+time.sleep(3)
 print "Continuing..."
 
 try:
