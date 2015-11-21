@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 # tcpserver.py
-import socket, traceback
+import socket, traceback, os
 
-host = ''
+host = '192.168.36.102'
 port = 8000
 mysocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 mysocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 mysocket.bind((host, port))
 mysocket.listen(100)
-print "Server is up and waiting for connections..."
+print "Server %s is listening on port %d ,and pid is %d , waiting for connections..." %(host, port, os.getpid())
 
 while 1:
     try:
@@ -42,10 +42,3 @@ while 1:
     except:
         traceback.print_exc()
 
-
-
-'''
-for socket_opt in dir(socket):
-    if socket_opt.startswith('SO_'):
-        print socket_opt
-'''
