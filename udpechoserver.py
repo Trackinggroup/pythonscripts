@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import socket, traceback
-host = '192.168.36.102'
+host = ''
 port = 8000
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

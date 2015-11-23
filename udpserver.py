@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # udpserver.py
 import socket, traceback, os
-host = '192.168.36.102'
+host = ''
 port = 8001
 udpsocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 udpsocket.bind((host, port))

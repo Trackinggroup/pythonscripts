@@ -2,8 +2,9 @@
 # tcpserver.py
 import socket, traceback, os
 
-host = '192.168.36.102'
+host = ''
 port = 8000
+
 mysocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 mysocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 mysocket.bind((host, port))
@@ -41,4 +42,3 @@ while 1:
         raise
     except:
         traceback.print_exc()
-
