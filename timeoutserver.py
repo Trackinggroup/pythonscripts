@@ -20,7 +20,7 @@ while 1:
         traceback.print_exc()
         continue
 
-    clientsock.settimeout(5)
+    #clientsock.settimeout(5)
 
     try:
         print "Got connection from ", clientsock.getpeername()
@@ -31,8 +31,8 @@ while 1:
             clientsock.sendall(data)
     except (KeyboardInterrupt, SystemExit):
         raise
-    except socket.timeout:
-        print "Timed out !"
+    #except socket.timeout:
+        #print "Timed out !"
     except:
         traceback.print_exec()
 
